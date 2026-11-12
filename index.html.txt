@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Executive Edge Technologies — Websites &amp; Lead Systems for Local Business</title>
+<meta name="description" content="Websites, booking systems and follow-up automation for local service businesses. Flat monthly retainers, no agency overhead.">
+<style>
+  :root{
+    --ink:#0b0b0c;
+    --ink-2:#131316;
+    --line:#26262b;
+    --bone:#efece6;
+    --mute:#8e8b86;
+    --accent:#ff5a1f;
+    --accent-dim:#3a1a0c;
+    --max:1120px;
+  }
+  *{box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{
+    margin:0;background:var(--ink);color:var(--bone);
+    font-family:ui-sans-serif,-apple-system,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+    font-size:17px;line-height:1.6;-webkit-font-smoothing:antialiased;
+  }
+  a{color:inherit}
+  .wrap{max-width:var(--max);margin:0 auto;padding:0 24px}
+  .label{
+    font-size:11px;letter-spacing:.18em;text-transform:uppercase;
+    color:var(--mute);font-weight:600;
+  }
+  /* nav */
+  header{
+    position:sticky;top:0;z-index:50;
+    background:rgba(11,11,12,.86);backdrop-filter:blur(12px);
+    border-bottom:1px solid var(--line);
+  }
+  .nav{display:flex;align-items:center;justify-content:space-between;height:68px}
+  .brand{display:flex;align-items:center;gap:10px;font-weight:700;letter-spacing:-.02em}
+  .mark{
+    width:26px;height:26px;border:1.5px solid var(--accent);position:relative;flex:none;
+  }
+  .mark::before,.mark::after{
+    content:"";position:absolute;background:var(--accent);
+  }
+  .mark::before{left:50%;top:0;bottom:0;width:1.5px;transform:translateX(-50%)}
+  .mark::after{top:50%;left:0;right:0;height:1.5px;transform:translateY(-50%)}
+  .brand span small{display:block;font-size:9.5px;letter-spacing:.22em;color:var(--mute);font-weight:600;text-transform:uppercase;margin-top:-3px}
+  nav.links{display:flex;gap:28px;font-size:14px}
+  nav.links a{text-decoration:none;color:var(--mute);transition:color .18s}
+  nav.links a:hover{color:var(--bone)}
+  .btn{
+    display:inline-block;text-decoration:none;font-weight:600;font-size:14.5px;
+    padding:13px 22px;border:1px solid var(--accent);color:var(--ink);
+    background:var(--accent);transition:.18s;
+  }
+  .btn:hover{background:transparent;color:var(--accent)}
+  .btn.ghost{background:transparent;color:var(--bone);border-color:var(--line)}
+  .btn.ghost:hover{border-color:var(--bone)}
+  /* hero */
+  .hero{padding:96px 0 72px;border-bottom:1px solid var(--line)}
+  .hero h1{
+    font-size:clamp(2.4rem,6.2vw,4.4rem);line-height:1.02;letter-spacing:-.035em;
+    margin:20px 0 0;max-width:16ch;font-weight:700;
+  }
+  .hero h1 em{font-style:normal;color:var(--accent)}
+  .hero p.lede{max-width:52ch;color:#b8b4ae;font-size:19px;margin:26px 0 34px}
+  .hero .actions{display:flex;gap:14px;flex-wrap:wrap}
+  .strip{
+    display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:var(--line);
+    border:1px solid var(--line);margin-top:64px;
+  }
+  .strip div{background:var(--ink-2);padding:20px 18px}
+  .strip b{display:block;font-size:22px;letter-spacing:-.02em}
+  .strip small{color:var(--mute);font-size:12px;letter-spacing:.06em;text-transform:uppercase}
+  /* sections */
+  section{padding:88px 0;border-bottom:1px solid var(--line)}
+  h2{font-size:clamp(1.7rem,3.6vw,2.6rem);line-height:1.1;letter-spacing:-.03em;margin:16px 0 0;font-weight:700;max-width:24ch}
+  .sub{color:var(--mute);max-width:60ch;margin:18px 0 0}
+  /* model */
+  .model-grid{display:grid;grid-template-columns:1.15fr .85fr;gap:64px;margin-top:48px;align-items:start}
+  table{width:100%;border-collapse:collapse;font-variant-numeric:tabular-nums}
+  th,td{text-align:left;padding:16px 0;border-bottom:1px solid var(--line);font-size:15.5px}
+  th{font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:var(--mute);font-weight:600}
+  td.num{text-align:right;font-weight:600;white-space:nowrap}
+  td.desc small{display:block;color:var(--mute);font-size:13px}
+  tr.total td{border-bottom:none;padding-top:26px;font-size:20px;font-weight:700}
+  tr.total td.num{color:var(--accent)}
+  .fine{font-size:13px;color:var(--mute);margin-top:18px;max-width:46ch}
+  .box{border:1px solid var(--line);padding:28px;background:var(--ink-2)}
+  .box .big{font-size:56px;line-height:1;letter-spacing:-.04em;font-weight:700;color:var(--accent)}
+  .box p{color:#b8b4ae;margin:14px 0 0;font-size:15.5px}
+  .box hr{border:none;border-top:1px solid var(--line);margin:26px 0}
+  .box .k{display:flex;justify-content:space-between;font-size:14px;padding:9px 0;border-bottom:1px dashed #24242a}
+  .box .k:last-of-type{border-bottom:none}
+  .box .k span:last-child{font-weight:600}
+  /* services */
+  .cards{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--line);border:1px solid var(--line);margin-top:48px}
+  .card{background:var(--ink-2);padding:32px 26px}
+  .card .n{font-size:11px;letter-spacing:.18em;color:var(--accent);font-weight:700}
+  .card h3{font-size:19px;margin:14px 0 10px;letter-spacing:-.015em}
+  .card p{color:var(--mute);font-size:14.5px;margin:0}
+  .card .price{margin-top:18px;font-weight:700;font-size:15px;color:var(--bone)}
+  /* steps */
+  ol.steps{list-style:none;counter-reset:s;padding:0;margin:48px 0 0;display:grid;gap:1px;background:var(--line);border:1px solid var(--line)}
+  ol.steps li{counter-increment:s;background:var(--ink-2);padding:26px 28px;display:grid;grid-template-columns:44px 1fr;gap:18px}
+  ol.steps li::before{
+    content:"0" counter(s);font-weight:700;color:var(--accent);font-size:14px;letter-spacing:.1em;padding-top:3px;
+  }
+  ol.steps h3{margin:0 0 6px;font-size:18px;letter-spacing:-.015em}
+  ol.steps p{margin:0;color:var(--mute);font-size:15px}
+  /* cta */
+  .cta{padding:96px 0;text-align:center;border-bottom:none}
+  .cta h2{margin:16px auto 0;max-width:22ch}
+  .cta p{color:var(--mute);max-width:46ch;margin:20px auto 32px}
+  footer{border-top:1px solid var(--line);padding:34px 0;font-size:13px;color:var(--mute)}
+  .foot{display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap}
+  @media(max-width:860px){
+    .model-grid{grid-template-columns:1fr;gap:36px}
+    .cards{grid-template-columns:1fr}
+    .strip{grid-template-columns:repeat(2,1fr)}
+    nav.links{display:none}
+    .hero{padding:64px 0 56px}
+    section{padding:64px 0}
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="wrap nav">
+    <div class="brand">
+      <div class="mark" aria-hidden="true"></div>
+      <span>Executive Edge Technologies<small>Local Revenue Lab</small></span>
+    </div>
+    <nav class="links">
+      <a href="#model">The Model</a>
+      <a href="#services">Services</a>
+      <a href="#start">How It Starts</a>
+    </nav>
+    <a class="btn" href="#start">Book a Call</a>
+  </div>
+</header>
+
+<main>
+
+<section class="hero">
+  <div class="wrap">
+    <p class="label">For local service businesses</p>
+    <h1>Websites that book work, not just look <em>nice.</em></h1>
+    <p class="lede">We build the site, the booking flow, and the follow-up so the phone rings without you babysitting it. Flat monthly retainers. No agency overhead, no six-month contracts.</p>
+    <div class="actions">
+      <a class="btn" href="#start">Get started</a>
+      <a class="btn ghost" href="#model">See the numbers</a>
+    </div>
+    <div class="strip">
+      <div><b>$149</b><small>Per month, flat</small></div>
+      <div><b>20</b><small>Clients is the target</small></div>
+      <div><b>48h</b><small>Typical turnaround</small></div>
+      <div><b>0</b><small>Long-term contracts</small></div>
+    </div>
+  </div>
+</section>
+
+<section id="model">
+  <div class="wrap">
+    <p class="label">The Model</p>
+    <h2>A small number of businesses, paying consistently.</h2>
+    <p class="sub">This is an illustrative month at steady state. It is not a projection of your first month, and it sits before software, taxes, contractors, payment fees and other expenses.</p>
+
+    <div class="model-grid">
+      <div>
+        <table>
+          <thead>
+            <tr><th>Revenue line</th><th style="text-align:right">Monthly</th></tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td class="desc">Retained clients<small>20 clients &times; $149/mo — hosting, updates, booking, follow-up</small></td>
+              <td class="num">$2,980</td>
+            </tr>
+            <tr>
+              <td class="desc">Website builds<small>2 builds &times; $1,000 — one-time, at the top of the funnel</small></td>
+              <td class="num">$2,000</td>
+            </tr>
+            <tr class="total">
+              <td>Total monthly revenue</td>
+              <td class="num">$4,980</td>
+            </tr>
+          </tbody>
+        </table>
+        <p class="fine">Target: <strong>$5,000/mo</strong>. Client acquisition and retention take real work — the model only holds if the retainers hold.</p>
+      </div>
+
+      <aside class="box">
+        <div class="big">20</div>
+        <p>businesses. That is the whole client base. You do not need 100 customers to make this work — you need a relatively small number of businesses paying you consistently.</p>
+        <hr>
+        <div class="k"><span>Annualised at steady state</span><span>~$59,760</span></div>
+        <div class="k"><span>Clients needed</span><span>20</span></div>
+        <div class="k"><span>Churn that breaks it</span><span>&gt;2/mo</span></div>
+      </aside>
+    </div>
+  </div>
+</section>
+
+<section id="services">
+  <div class="wrap">
+    <p class="label">Services</p>
+    <h2>Three things, done properly.</h2>
+    <p class="sub">Narrow by design. Every retainer includes all three, because a site without booking and follow-up is just an expensive brochure.</p>
+
+    <div class="cards">
+      <div class="card">
+        <div class="n">01</div>
+        <h3>Site build</h3>
+        <p>Fast, mobile-first, built to convert calls and form fills. Copy included. Live in days, not months.</p>
+        <div class="price">$1,000 one-time</div>
+      </div>
+      <div class="card">
+        <div class="n">02</div>
+        <h3>Booking &amp; intake</h3>
+        <p>Calendar, quote forms and deposit capture wired into the site so enquiries become appointments.</p>
+        <div class="price">Included in retainer</div>
+      </div>
+      <div class="card">
+        <div class="n">03</div>
+        <h3>Follow-up</h3>
+        <p>Automated SMS and email sequences for missed calls and cold enquiries. Nothing sits unanswered.</p>
+        <div class="price">$149/mo</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="start">
+  <div class="wrap">
+    <p class="label">How It Starts</p>
+    <h2>Four steps, first one today.</h2>
+
+    <ol class="steps">
+      <li>
+        <div>
+          <h3>Pick the niche</h3>
+          <p>One trade, one metro. Roofers, dentists, mobile mechanics — whoever has real ticket value and answers their phone.</p>
+        </div>
+      </li>
+      <li>
+        <div>
+          <h3>Build one proof asset</h3>
+          <p>A single spec site for a fictional business in that niche. It is the sales deck. Nothing else gets sent before it exists.</p>
+        </div>
+      </li>
+      <li>
+        <div>
+          <h3>Outreach to 30</h3>
+          <p>Direct email, walk-ins, and calls. Lead with the rebuild, not the retainer. Ten conversations gets you your first two builds.</p>
+        </div>
+      </li>
+      <li>
+        <div>
+          <h3>Convert build to retainer</h3>
+          <p>The build is the foot in the door. Booking and follow-up go live the same week, and the $149 starts.</p>
+        </div>
+      </li>
+    </ol>
+  </div>
+</section>
+
+<section class="cta">
+  <div class="wrap">
+    <p class="label">Executive Edge Technologies</p>
+    <h2>Twenty businesses. That is the whole plan.</h2>
+    <p>Tell us the trade and the town. We will send back a rebuild of your current site, free, before you commit to anything.</p>
+    <a class="btn" href="mailto:hello@executiveedge.tech">hello@executiveedge.tech</a>
+  </div>
+</section>
+
+</main>
+
+<footer>
+  <div class="wrap foot">
+    <span>&copy; 2026 Executive Edge Technologies — Local Revenue Lab</span>
+    <span>Figures are illustrative, before expenses.</span>
+  </div>
+</footer>
+
+</body>
+</html>
